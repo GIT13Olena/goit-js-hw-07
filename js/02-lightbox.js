@@ -15,7 +15,12 @@ function createGalleryItem({ preview, original, description }) {
   galleryImage.src = preview;
   galleryImage.alt = description;
 
+  const galleryCaption = document.createElement("figcaption");
+  galleryCaption.classList.add("gallery__caption");
+  galleryCaption.textContent = description;
+
   galleryLink.appendChild(galleryImage);
+  galleryLink.appendChild(galleryCaption);
   galleryItem.appendChild(galleryLink);
 
   return galleryItem;
@@ -27,4 +32,5 @@ gallery.append(...galleryItemsElements);
 const lightbox = new SimpleLightbox(".gallery a", {
   captions: true,
   captionDelay: 250,
+  captionsData: "alt",
 });
